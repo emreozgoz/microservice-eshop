@@ -14,12 +14,12 @@
             RuleFor(x => x.Price).GreaterThan(0).WithMessage("Price is required");
         }
     }
-    public class CreateProductCommandHandler(IDocumentSession session, ILogger<CreateProductCommandHandler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    public class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
 
-            logger.LogInformation("CreateProductCommandHandler.Handle called with {@Command}");
+            
             var product = new Product
             {
                 Category = command.Category,
